@@ -9,8 +9,8 @@ This class can be used in many types of projects such as:
  - cleaning your mailing list prior to an email marketing campaign
  - a form of fraud check
 
-Installation
-============
+Compilation
+===========
 
 Just open the solution file in Visual Studio 2012 or later and compile:
 
