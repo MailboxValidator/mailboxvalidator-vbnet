@@ -1,9 +1,9 @@
 MailboxValidator VB.NET Libary
 ==============================
 
-This VB.NET libary provides an easy way to call the MailboxValidator API which validates if an email address is a valid one.
+This VB.NET library provides an easy way to call the MailboxValidator API which validates if an email address is a valid one.
 
-This class can be used in many types of projects such as:
+This library can be used in many types of projects such as:
 
  - validating a user's email during sign up
  - cleaning your mailing list prior to an email marketing campaign
@@ -17,7 +17,7 @@ Just open the solution file in Visual Studio 2012 or later and compile:
 Dependencies
 ============
 
-An API key is required for this class to function.
+An API key is required for this library to function.
 
 Go to http://www.mailboxvalidator.com/plans#api to sign up for a FREE API plan and you'll be given an API key.
 
