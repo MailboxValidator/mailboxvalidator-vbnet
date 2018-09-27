@@ -21,8 +21,8 @@ An API key is required for this library to function.
 
 Go to https://www.mailboxvalidator.com/plans#api to sign up for a FREE API plan and you'll be given an API key.
 
-Usage
-=====
+Usage for validating emails
+===========================
 
 ```vbnet
 Imports System.Text
@@ -191,6 +191,149 @@ The error code if there is any error. See error table below.
 ### error_message
 
 The error message if there is any error. See error table below.
+
+
+Usage for checking if an email is from a disposable email provider
+==================================================================
+
+```vbnet
+Imports System.Text
+Imports Microsoft.VisualStudio.TestTools.UnitTesting
+
+<TestClass()> Public Class TestMailboxValidatorVB
+
+    <TestMethod()> Public Sub TestMethod1()
+        Dim mbv = New MailboxValidator.SingleValidation("PASTE_YOUR_API_KEY_HERE")
+        Dim results As String = ""
+        Try
+            Dim rec = mbv.DisposableEmail("example@example.com")
+
+            If rec.ErrorCode = "" Then
+                results += "email_address: " & rec.EmailAddress & vbCrLf
+                results += "is_disposable: " & rec.IsDisposable & vbCrLf
+                results += "credits_available: " & rec.CreditsAvailable & vbCrLf
+            Else
+                results += "error_code: " & rec.ErrorCode & vbCrLf
+                results += "error_message: " & rec.ErrorMessage & vbCrLf
+            End If
+
+            results += "version: " & rec.Version & vbCrLf
+            MsgBox(results)
+        Catch ex As Exception
+            MsgBox(ex.Message & vbCrLf & ex.StackTrace)
+        End Try
+    End Sub
+
+End Class
+```
+
+Functions
+=========
+
+### SingleValidation(api_key)
+
+Creates a new instance of the MailboxValidator object with the API key.
+
+### DisposableEmail(email_address)
+
+Check if the supplied email address is from a disposable email provider.
+
+Result Fields
+=============
+
+### email_address
+
+The input email address.
+
+### is_disposable
+
+Whether the email address is a temporary one from a disposable email provider.
+
+Return values: True, False
+
+### credits_available
+
+The number of credits left to perform validations.
+
+### error_code
+
+The error code if there is any error. See error table below.
+
+### error_message
+
+The error message if there is any error. See error table below.
+
+
+Usage for checking if an email is from a free email provider
+============================================================
+
+```vbnet
+Imports System.Text
+Imports Microsoft.VisualStudio.TestTools.UnitTesting
+
+<TestClass()> Public Class TestMailboxValidatorVB
+
+    <TestMethod()> Public Sub TestMethod1()
+        Dim mbv = New MailboxValidator.SingleValidation("PASTE_YOUR_API_KEY_HERE")
+        Dim results As String = ""
+        Try
+            Dim rec = mbv.FreeEmail("example@example.com")
+
+            If rec.ErrorCode = "" Then
+                results += "email_address: " & rec.EmailAddress & vbCrLf
+                results += "is_free: " & rec.IsFree & vbCrLf
+                results += "credits_available: " & rec.CreditsAvailable & vbCrLf
+            Else
+                results += "error_code: " & rec.ErrorCode & vbCrLf
+                results += "error_message: " & rec.ErrorMessage & vbCrLf
+            End If
+
+            results += "version: " & rec.Version & vbCrLf
+            MsgBox(results)
+        Catch ex As Exception
+            MsgBox(ex.Message & vbCrLf & ex.StackTrace)
+        End Try
+    End Sub
+
+End Class
+```
+
+Functions
+=========
+
+### SingleValidation(api_key)
+
+Creates a new instance of the MailboxValidator object with the API key.
+
+### FreeEmail(email_address)
+
+Check if the supplied email address is from a free email provider.
+
+Result Fields
+=============
+
+### email_address
+
+The input email address.
+
+### is_free
+
+Whether the email address is from a free email provider like Gmail or Hotmail.
+
+Return values: True, False
+
+### credits_available
+
+The number of credits left to perform validations.
+
+### error_code
+
+The error code if there is any error. See error table below.
+
+### error_message
+
+The error message if there is any error. See error table below.
+
 
 Errors
 ======
